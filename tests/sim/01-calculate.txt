@@ -1,0 +1,51 @@
+# The Calculate screen: answers, ans, letters, errors, history.
+expect calc
+shot 10-calc-empty
+type 2+3*4
+key enter
+expect-result 14
+type +1
+key enter
+expect-result 15
+type sqrt(2)
+key enter
+expect-result 1.414213562
+type 1/3+1/6
+key enter
+expect-result 0.5
+type 2^100
+key enter
+expect-result 1.2676506×10³⁰
+type a = 7
+key enter
+expect-result a = 7
+type 3a^2 - 2a
+key enter
+expect-result 133
+type 5!
+key enter
+expect-result 120
+type sin(pi/6)
+key enter
+expect-result 0.5
+shot 11-calc-history
+type sin(30
+key enter
+expect-result A ) is missing
+shot 12-calc-error
+key esc
+type 1/0
+key enter
+expect-result undefined
+# Up recalls the last line to change it.
+key up
+key backspace
+type 4
+key enter
+expect-result 0.25
+type y1 = x^2 - 4
+key enter
+expect-result Saved as y1 (F3 to graph)
+type y1(3)
+key enter
+expect-result 5

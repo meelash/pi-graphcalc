@@ -1,0 +1,23 @@
+# Everything is kept after a restart; F10 goes back to the boot menu.
+restart
+expect calc
+expect-result 0.5
+type a
+key enter
+expect-result 7
+key f3
+expect graph
+shot 40-after-restart
+key f10
+expect-menu-return 0
+menu on
+shot 41-graph-menu-hint
+key f10
+shot 42-menu-question
+key esc
+expect-menu-return 0
+key f10
+key enter
+wait 200
+expect-menu-return 1
+shot 43-going-to-menu
